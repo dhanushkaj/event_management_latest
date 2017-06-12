@@ -1,0 +1,88 @@
+<div class="panel panel-default">
+  <div class="panel-heading" style="font-weight: bolder">Region</div>
+  <div class="panel-body">
+    <div class="row">
+    </div>
+    <div style="height: 450px">
+      <form name="regionForm" class="form-horizontal" novalidate>
+        <fieldset>
+          <div class="form-group"
+               ng-class="{'has-error':regionForm.inputMemberName.$invalid &&
+                                    regionForm.inputRegionName.$dirty}">
+
+            <label class="col-md-2 control-label"
+                   for="inputRegionName">Name</label>
+
+            <div class="col-md-4">
+              <input class="form-control"
+                     id="inputRegionName"
+                     name="inputRegionName"
+                     type="text"
+                     placeholder="Name (required)"
+                     ng-model="vm.region.regionName"
+                     ng-minlength="3"
+                     ng-maxlength="40"
+                     required/>
+                <span class="help-block has-error">
+                      <span ng-messages="regionForm.inputRegionName.$error"
+                            ng-show="regionForm.inputRegionName.$invalid &&
+                                       regionForm.inputRegionName.$dirty" multiple>
+                          <span ng-message="required">Name is required!</span>
+                          <span ng-message="minlength">3 Characters required!</span>
+                          <span ng-message="maxlength">Limited to 40 Characters!</span>
+                      </span>
+                 </span>
+               </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="regionCode">Code</label>
+            <div class="col-md-4">
+              <input class="form-control"
+                     placeholder="Code"
+                     id="regionCode"
+                     ng-model="vm.region.regionCode"
+                     ng-minlength="3"
+                     ng-maxlength="40"
+                     required
+                     />
+
+               <span class="help-block has-error">
+                      <span ng-messages="regionForm.regionCode.$error"
+                            ng-show="regionForm.regionCode.$invalid &&
+                                       regionForm.regionCode.$dirty" multiple>
+                          <span ng-message="required">Name is required!</span>
+                          <span ng-message="minlength">3 Characters required!</span>
+                          <span ng-message="maxlength">Limited to 40 Characters!</span>
+                      </span>
+                 </span>
+
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-2">
+                <span>
+                    <button class="btn btn-primary"
+                            style="width: 80px; margin-right: 10px"
+                            ng-click="vm.submit()"
+                            ng-disabled="regionForm.$invalid">
+                      Save
+                    </button>
+                </span>
+                 <span>
+                    <button class="btn btn-default"
+                            style="width: 70px;"
+                            ng-click="vm.cancel()">
+                      Cancel
+                    </button>
+                </span>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

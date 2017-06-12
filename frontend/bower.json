@@ -1,0 +1,43 @@
+{
+  "name": "event-manger",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "^1.3.0",
+    "angular-animate": "~1.4.2",
+    "angular-bootstrap": "~0.13.0",
+    "angular-bootstrap-calendar": "~0.12.0",
+    "angular-messages": "~1.4.3",
+    "angular-modal-service": "~0.6.9",
+    "angular-moment": "~0.10.1",
+    "angular-resource": "~1.4.1",
+    "angular-snap": "~1.8.2",
+    "angular-toastr": "~1.4.1",
+    "angular-ui-calendar": "~1.0.0",
+    "angular-ui-router-anim-in-out": "~0.0.13",
+    "angular-utils-pagination": "~0.8.3",
+    "angularjs-datepicker": "~0.2.5",
+    "bootstrap": "^3.2.0",
+    "fontawesome": "~4.3.0",
+    "jshint": "~2.9.0",
+    "ng-switchery": "~1.0.0-alpha7",
+    "ngDialog": "~0.5.4",
+    "rdash-ui": "~1.0.1",
+    "satellizer": "~0.11.2",
+    "ui-router": "~0.2.15",
+    "angular-ui-mask": "~1.4.7",
+    "ng-file-upload": "~9.1.1",
+    "ng-file-upload-shim": "~9.1.1",
+    "angular-permission": "~1.1.1",
+    "angular-cookies": "~1.5.3",
+    "ng-csv": "~0.3.6"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.3.0"
+  },
+  "appPath": "app",
+  "moduleName": "eventMangerApp",
+  "resolutions": {
+    "angular": ">=1.3.0",
+    "angular-animate": "~1.4.2"
+  }
+}

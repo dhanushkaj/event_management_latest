@@ -1,0 +1,42 @@
+<!--<div class="panel-heading" style="font-size: large;">Event Info</div>-->
+<div class="panel-body">
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <div class="row">
+                <label class="col-md-4 control-label holcim-label ">Owner(ASO)</label>
+                <div class="col-md-2">{{vm.event.owner}}</div>
+            </div>
+            <div class="row">
+                <label class="col-md-4 control-label holcim-label ">Location</label>
+                <div class="col-md-6">{{vm.locationName}}</div>
+            </div>
+            <div class="row">
+                <label class="col-md-4 control-label holcim-label ">Type</label>
+                <div class="col-md-6">{{vm.event.title}}</div>
+            </div>
+            <div class="row">
+                <label class="col-md-4 control-label holcim-label ">Code</label>
+                <div class="col-md-6">{{vm.event.code}}</div>
+            </div>
+            <div class="row">
+                <label class="col-md-4 control-label holcim-label ">Availability</label>
+                <div class="col-md-6">{{vm.event.start | date}}</div>
+            </div>
+            <div class="row">
+                <label class="col-md-4 control-label holcim-label ">Description</label>
+                <div class="col-md-6">{{vm.event.description}}</div>
+            </div>
+             <div class="row">
+                <label class="col-md-4 control-label holcim-label ">Budget</label>
+                <div class="col-md-6">{{vm.event.budget}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel-footer">
+    <a class="btn btn-default" ui-sref="eventCalendar">
+        Calendar
+    </a>
+    <a class="btn btn-primary" ui-sref="eventDetails.edit({eventId:vm.event.id})"
+       style="width: 80px; margin-left: 10px">Edit</a>
+</div>

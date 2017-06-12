@@ -1,0 +1,403 @@
+<form name="memberMoreInfoForm" class="form-horizontal" novalidate>
+  <fieldset>
+    <div class="panel-body">
+      <div class="row" style="margin-bottom: 0px;padding-bottom: 0px">
+        <div class="col-md-2">
+          <label class="holcim-label">Title</label>
+          <div class="holcim-label">{{vm.event.title}}</div>
+        </div>
+        <div class="col-md-2">
+          <label class="holcim-label">Date</label>
+          <div class="holcim-label">{{vm.event.start | date}}</div>
+        </div>
+        <div class="col-md-2">
+          <label class="holcim-label">Location</label>
+          <div class="holcim-label">{{vm.locationName}}</div>
+        </div>
+        <div class="col-md-2">
+          <label class="holcim-label">No Of Answered</label>
+          <div>
+            <input class="form-control holcim-event-feedback-text-field" style="width: 110px"
+                   id="noOfAnswered"
+                   type="text"
+                   ng-model="vm.event.noOfAnswered"/>
+          </div>
+        </div>
+      </div>
+      <hr style="margin-top: 0px;">
+      <div>
+        <div class="row">
+          <div class="col-md-8" style="margin-left:120px;font-weight: bolder;width: 100%">
+            <div class="col-md-1" style="width: 15%"></div>
+            <div class="col-md-1 holcim-event-feedback-column-header">
+              <img ng-src="./images/normal.png"/>
+              <span class="holcim-label"> Normal</span>
+            </div>
+            <div class="col-md-1 holcim-event-feedback-column-header" style="width: 12%">
+              <img ng-src="./images/fairly-happy.png"/>
+              <span class="holcim-label"> Fairly Happy</span>
+            </div>
+            <div class="col-md-1 holcim-event-feedback-column-header" style="width: 9%">
+              <img ng-src="./images/happy.png"/>
+              <span class="holcim-label"> Happy</span>
+            </div>
+
+            <div class="col-md-1 holcim-event-feedback-column-header">
+              <img ng-src="./images/good.png"/> <span class="holcim-label">Good</span>
+            </div>
+
+            <div class="col-md-1 holcim-event-feedback-column-header" style="width: 12%">
+              <img ng-src="./images/very-good.png"/>
+              <span class="holcim-label">Very Good</span>
+            </div>
+
+            <div class="col-md-1 holcim-event-feedback-column-header" style="width: 9%">
+              <span class="holcim-label">Total</span>
+            </div>
+
+            <div class="col-md-1 holcim-event-feedback-column-header">
+              <span class="holcim-label">Comments/Suggestion</span>
+            </div>
+
+          </div>
+
+          <div style="font-weight: bolder;width: 100%">
+            <div class="row" class="col-md-8">
+              <div class="col-md-1" style="font-weight:bolder;width:27%">
+                <span class="holcim-label" style="align-content: center">Safety with all process</span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.n1"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.fh1"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.h1"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.g1"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.vg1"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.total1"  style="width: 60px;height:40px"/></span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.comments1"  style="width: 400px;height:50px"/>
+              </span>
+              </div>
+            </div>
+            <div class="row" class="col-md-8">
+              <div class="col-md-1" style="font-weight:bolder;width: 27%">
+                <span class="holcim-label" style="align-content: center">What's the relations between my job and this Program</span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.n2"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.fh2"  style="width: 60px;height:40px"/></span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.h2"  style="width: 60px;height:40px"/> </span>
+              </div>
+              <div class="col-md-1  holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text" ng-model="vm.event.g2"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.vg2"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.total2"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.comments2"  style="width: 400px;height:50px"/>
+              </span>
+              </div>
+            </div>
+            <div class="row" class="col-md-8">
+              <div class="col-md-1" style="font-weight:bolder;width:27%">
+                <span class="holcim-label" style="align-content: center">How much useful the equipment which is given by company</span>
+              </div>
+
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.n3"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.fh3"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.h3"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.g3"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.vg3"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.total3"  style="width: 60px;height:40px"/> </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header">
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.comments3"  style="width: 400px;height:50px"/>
+              </span>
+              </div>
+            </div>
+            <div class="row" class="col-md-8">
+              <div class="col-md-1 holcim-event-feedback-column-header"
+                   style="font-weight:bolder;width: 27%">
+                <span class="holcim-label" style="align-content: center">The qualitative of discussion</span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+
+                       type="text"
+                       ng-model="vm.event.n4"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.fh4"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.h4"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.g4"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.vg4"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.total4"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.comments4"  style="width: 400px;height:50px"/>
+              </span>
+              </div>
+            </div>
+            <div class="row" class="col-md-8">
+              <div class="col-md-1 holcim-event-feedback-column-header" style="font-weight:bolder;width: 27%">
+                <span class="holcim-label" style="align-content: center">Time period for the programmed</span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text" ng-model="vm.event.n5"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.fh5"  style="width: 60px;height:40px"/></span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.h5" style="width: 60px;height:40px"/> </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.g5"  style="width: 60px;height:40px"/></span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.vg5"  style="width: 60px;height:40px"/></span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text" ng-model="vm.event.total5"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.comments5"  style="width: 400px;height:50px"/>
+              </span>
+              </div>
+            </div>
+            <div class="row" class="col-md-8">
+              <div class="col-md-1 holcim-event-feedback-column-header" style="font-weight:bolder;width: 27%">
+		          <span class="holcim-label" style="align-content: center">What you think about one of the another partners carrying with
+you for this programmed.</span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+
+                       type="text" ng-model="vm.event.n6"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text" ng-model="vm.event.fh6"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.h6"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text" ng-model="vm.event.g6"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text" ng-model="vm.event.vg6"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.total6"  style="width: 60px;height:40px"/>
+              </span>
+              </div>
+              <div class="col-md-1 holcim-event-feedback-column-header" >
+		          <span style="align-content: center">
+                <input class="form-control holcim-event-feedback-text-field"
+                       type="text"
+                       ng-model="vm.event.comments6"  style="width: 400px;height:50px"/>
+              </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-4 col-md-offset-2">
+                <span>
+                    <button class="btn btn-primary"
+                            style="width: 80px; margin-right: 10px"
+                            ng-click="vm.submit()">
+                      Save
+                    </button>
+                </span>
+                 <span>
+                    <button class="btn btn-default"
+                            style="width: 70px;"
+                            ng-click="vm.cancel()">
+                      Cancel
+                    </button>
+                </span>
+        </div>
+      </div>
+      </div>
+  </fieldset>
+</form>

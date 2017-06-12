@@ -1,0 +1,320 @@
+<form name="memberMoreInfoForm" class="form-horizontal" novalidate>
+  <fieldset>
+  
+  <div ng-if="vm.member.influencerCode=='mason' || vm.member.influencerCode==null">
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label">B'Card Sent</label>
+      <div class="col-md-1">
+        <input type="checkbox" style="margin-top: 10px"
+               ng-model="vm.member.moreInfo.birthdayCardSent"
+               ng-true-value="true" ng-false-value="false">
+      </div>
+      <div class="col-md-2" ng-show="vm.member.moreInfo.birthdayCardSent">
+        <select class="form-control"
+                ng-options="year as year for year in vm.birthYears"
+                ng-model="vm.member.moreInfo.cardSentYear" required>
+          <option value="">Sent Year</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label">Gift Date</label>
+      <div class="col-md-3">
+        <div class="input-group">
+          <input class="form-control"
+                 id="inputMemberGiftDate"
+                 type="text"
+                 is-open="vm.opend"
+                 datepicker-popup="MMM dd, yyyy"
+                 ng-model="vm.member.moreInfo.giftDate"
+                 required/>
+                      <span class="input-group-btn">
+                          <button class="btn btn-default"
+                                  data="giftDate"
+                                  ng-click="vm.open($event)">
+                            <i class="glyphicon glyphicon-calendar"/>
+                          </button>
+                      </span>
+            </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label">Gift Given Date</label>
+      <div class="col-md-3">
+        <div class="input-group">
+          <input class="form-control"
+                 id="inputMemberGiftGivenDate"
+                 type="text"
+                 is-open="vm.openedGivenDatePicker"
+                 datepicker-popup="MMM dd, yyyy"
+                 ng-model="vm.member.moreInfo.giftGivenDate"
+                 required/>
+                      <span class="input-group-btn">
+                          <button class="btn btn-default"
+                                  data="openedGivenDatePicker"
+                                  ng-click="vm.open($event)">
+                            <i class="glyphicon glyphicon-calendar"/>
+                          </button>
+                      </span>
+            </div>
+      </div>
+    </div>
+    
+    
+     <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfoGiftGiven">Gift Given</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberInfoGiftGiven"
+               placeholder="Gift Given"
+               ng-model="vm.member.moreInfo.giftGiven" required/>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfoCollectedCoupons">Collected Coupon</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberInfoCollectedCoupons"
+               placeholder="Collected Coupon"
+               ng-model="vm.member.moreInfo.collectedCoupons" required/>
+      </div>
+    </div>
+   
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfoGiftCategory">Gift Category</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberInfoGiftCategory"
+               placeholder="Gift Category"
+               ng-model="vm.member.moreInfo.giftCategory" required/>
+      </div>
+    </div>
+     
+     <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfoInEvent">In Event</label>
+      <div class="col-md-4">
+        	 <select class="form-control"
+                  ng-options="inevent.key as inevent.value for inevent in vm.yesNo"
+                  ng-model="vm.member.moreInfo.inEvent" required >
+              <option value="">In Event</option>
+           </select>  
+      </div>
+    </div>
+      
+        
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label">Event Date</label>
+      <div class="col-md-3">
+        <div class="input-group">
+          <input class="form-control"
+                 id="inputMemberEventDate"
+                 type="text"
+                 is-open="vm.openedEventDatePicker"
+                 datepicker-popup="MMM dd, yyyy"
+                 ng-model="vm.member.moreInfo.eventDate"
+                 required/>
+                      <span class="input-group-btn">
+                          <button class="btn btn-default"
+                                  data="openedEventDatePicker"
+                                  ng-click="vm.open($event)">
+                            <i class="glyphicon glyphicon-calendar"/>
+                          </button>
+                      </span>
+            </div>
+      </div>
+    </div>
+    
+     
+     <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfoGiftCategory">Bad Cut Pieces</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberInfoBadCutPieces"
+               placeholder="Bad Cut Piesces"
+               ng-model="vm.member.moreInfo.badCutPieces" required/>
+      </div>
+    </div>
+     
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfoAttendance">Attendance</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberInfoAttendance"
+               placeholder="Attendance"
+               ng-model="vm.member.moreInfo.attendance" required/>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfoUpdateProfile">Update Profile</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberInfoUpdateProfile"
+               placeholder="Update Profile"
+               ng-model="vm.member.moreInfo.updateProfile" required/>
+      </div>
+    </div> 
+    
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfoSugession">Sugessions</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberInfoSugession"
+               placeholder="Sugessions"
+               ng-model="vm.member.moreInfo.sugession" required/>
+      </div>
+    </div> 
+  
+     <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfoPresentRcBook">Present RC Book</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberInfoPresentRcBook"
+               placeholder="Present RC Book"
+               ng-model="vm.member.moreInfo.presentRcBook" required/>
+      </div>
+    </div> 
+     
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfoUpdateMiniMasonMeet">Update Mini Mason Meet</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberInfoUpdateMiniMasonMeet"
+               placeholder="Update Mini Mason Meet"
+               ng-model="vm.member.moreInfo.updateMiniMasonMeet" required/>
+      </div>
+    </div> 
+    
+     <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfoMarketInOpportunity">Market In Opportunity</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberInfoMarketInOpportunity"
+               placeholder="Market In Opportunity"
+               ng-model="vm.member.moreInfo.marketInOpportunity" required/>
+      </div>
+    </div> 
+    
+     <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfoLoyalty">Loyalty</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberInfoLoyalty"
+               placeholder="Loyalty"
+               ng-model="vm.member.moreInfo.loyalty" required/>
+      </div>
+    </div> 
+     
+     <div class="form-group">
+      <label class="col-md-2 control-label holcim-label">Entered Date</label>
+      <div class="col-md-3">
+        <div class="input-group">
+          <input class="form-control"
+                 id="inputMemberInfoEnteredDate"
+                 type="text"
+                 is-open="vm.openedEnteredDatePicker"
+                 datepicker-popup="MMM dd, yyyy"
+                 ng-model="vm.member.moreInfo.enteredDate"
+                 required/>
+                      <span class="input-group-btn">
+                          <button class="btn btn-default"
+                                  data="openedEnteredDatePicker"
+                                  ng-click="vm.open($event)">
+                            <i class="glyphicon glyphicon-calendar"/>
+                          </button>
+                      </span>
+            </div>
+      </div>
+    </div>
+    
+    
+     <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfoTotal">Total</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberInfoTotal"
+               placeholder="Total"
+               ng-model="vm.member.moreInfo.total" required/>
+      </div>
+    </div> 
+  </div>
+  <div ng-if="vm.member.influencerCode=='engineer' || vm.member.influencerCode=='to'">
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfogiftCost">Gift Cost</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberInfogiftCost"
+               placeholder="Gift Cost"
+               ng-model="vm.member.moreInfo.giftCost" required/>
+      </div>
+    </div> 
+      <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfoCostPerContact">Cost Per Contact</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberInfoCostPerContact"
+               placeholder="Cost Per Contact"
+               ng-model="vm.member.moreInfo.costPerContact" required/>
+      </div>
+    </div> 
+    
+     <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfoNoOfEventParticipated">No Of Event Participated</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberInfoNoOfEventParticipated"
+               placeholder="No Of Event Participated"
+               ng-model="vm.member.moreInfo.noOfEventParticipated" required/>
+      </div>
+    </div> 
+    
+     <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberInfoLocation">Location</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberInfoLocation"
+               placeholder="Location"
+               ng-model="vm.member.moreInfo.location" required/>
+      </div>
+    </div> 
+  </div> 
+     
+    <div class="form-group">
+      <div class="col-md-4 col-md-offset-2">
+                <span>
+                    <button class="btn btn-primary"
+                            style="width: 80px; margin-right: 10px"
+                            ng-click="vm.submit()">
+                      Save
+                    </button>
+                </span>
+                 <span>
+                    <button class="btn btn-default"
+                            style="width: 70px;"
+                            ng-click="vm.cancel()">
+                      Cancel
+                    </button>
+                </span>
+      </div>
+    </div>
+  </fieldset>
+</form>
+

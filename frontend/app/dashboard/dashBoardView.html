@@ -1,0 +1,150 @@
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-xs-12">
+        <rd-widget>
+            <rd-widget-body>
+                <button class="btn btn-profile dropdown-toggle" type="button"
+                        id="dropdownEventMenu" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                <div class="widget-icon orange pull-left">
+                    <i class="fa fa-flag"></i>
+                </div>
+                <div class="title">{{vm.eventList.length}}</div>
+                <div class="comment">Events</div>
+                </button>
+                <!--<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMembersMenu">-->
+                <!--<li><a href="#">Profile</a></li>-->
+                <!--</ul>-->
+            </rd-widget-body>
+        </rd-widget>
+    </div>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+        <rd-widget style="height: 119px">
+            <rd-widget-body>
+                <button class="btn btn-profile dropdown-toggle" type="button"
+                        id="dropdownMembersMenu" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                <div class="widget-icon green pull-left">
+                    <i class="fa fa-users"></i>
+                </div>
+                <div class="title">{{vm.influencerList.length}}</div>
+                <div class="comment">Members</div>
+                </button>
+                <!--<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMembersMenu">-->
+                    <!--<li><a href="#">Profile</a></li>-->
+                <!--</ul>-->
+            </rd-widget-body>
+        </rd-widget>
+    </div>
+    <div class="col-lg-3 col-md-6 col-xs-12">
+        <rd-widget>
+            <rd-widget-body>
+                <button class="btn btn-profile dropdown-toggle" type="button"
+                        id="dropdownBirthDaysMenu" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                    <div class="item">
+                        <div class="widget-icon red pull-left">
+                            <i class="fa fa-birthday-cake"></i>
+                        </div>
+                        <div class="title">{{vm.birthDayList.length}}</div>
+                        <div class="comment">Upcoming</div>
+                    </div>
+                    <!--<span class="caret"></span>-->
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownBirthDaysMenu" data-autodividers="true">
+                    <li ng-repeat="birthDay in vm.birthDayList | orderBy: 'birthDay.dob': true"
+                        class="birth-card" ng-class="{'birth-card-sent':birthDay.bithdaycardsent}">
+                        <a ui-sref="memberEdit.info({memberId:birthDay._id})">
+                            <div>
+                            <div ng-show="birthDay.influencecat=='Engineer'" class="circleBase type2" style="display: inline-block">E</div>
+                            <div ng-show="birthDay.influencecat=='Mason'" class="circleBase type3" style="display: inline-block">E</div>
+                            {{birthDay.influncename}},
+                            {{birthDay.dob| date:'MM/dd'}}
+                            </div>
+                        </a>
+                    </li>
+                    <!--<li><a href="#"> <div class="circleBase type2" style="display: inline-block">E</div></a></li>-->
+                    <!--<li><a href="#"> <div class="circleBase type2" style="display: inline-block">E</div></a></li>-->
+                    <!--<li><a href="#"><div class="circleBase type3" style="display: inline-block">M</div></a></li>-->
+                    <!--<li><a ng-click="logout()">Logout</a></li>-->
+                </ul>
+            </rd-widget-body>
+        </rd-widget>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <rd-widget>
+            <rd-widget-header icon="fa-bell" title="Events">
+            </rd-widget-header>
+            <rd-widget-body classes="medium no-padding">
+                <div style="height: 50px">
+                    <form class="search-form">
+                        <div class="form-group has-feedback">
+                            <!--<label for="search" class="sr-only">Search</label>-->
+                            <input type="text" class="form-control" ng-model="searchKeyword"
+                                   name="search"  placeholder="search">
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                    </form>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Owner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="event in vm.eventList | filter:searchKeyword">
+                            <td>
+                                <a ui-sref="eventDetails.info({eventId:event.id})">{{event.code}}</a>
+                            </td>
+                            <td>{{event.start|date:'MMM d, y h:mm: a'}}</td>
+                            <td>{{event.owner}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </rd-widget-body>
+        </rd-widget>
+    </div>
+    <div class="col-lg-6">
+        <rd-widget>
+            <rd-widget-header icon="fa-users" title="Users">
+            </rd-widget-header>
+            <rd-widget-body classes="medium no-padding">
+                <div class="table-responsive">
+                    <form class="search-form">
+                        <div class="form-group has-feedback" style="height: 30px" >
+                            <!--<label for="search" class="sr-only">Search</label>-->
+                            <input type="text" class="form-control" ng-model="searchKeyword" name="search"  placeholder="search">
+                            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                        </div>
+                    </form>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Contact#</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr dir-paginate= "influencer in vm.influencerList| filter:searchKeyword | itemsPerPage:5">
+                            <td>
+                                <a ui-sref="memberEdit.info({memberId:influencer._id})">{{influencer.influncename}}</a>
+                            </td>
+                            <td>{{influencer.location}}</td>
+                            <td>{{influencer.mobileno}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </rd-widget-body>
+            <rd-widget>
+    </div>
+</div>

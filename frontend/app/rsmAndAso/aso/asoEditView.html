@@ -1,0 +1,110 @@
+<div class="panel panel-default">
+  <div class="panel-heading" style="font-weight: bolder">Area Sales Officer</div>
+  <div class="panel-body">
+    <div class="row">
+    </div>
+    <div style="height: 450px">
+      <form name="asoForm" class="form-horizontal" novalidate>
+        <fieldset>
+          <div class="form-group"
+               ng-class="{'has-error':asoForm.inputMemberName.$invalid &&
+                                    asoForm.inputAsoName.$dirty}">
+            <label class="col-md-2 control-label"
+                   for="inputAsoName">Name</label>
+            <div class="col-md-4">
+              <input class="form-control"
+                     id="inputAsoName"
+                     name="inputAsoName"
+                     type="text"
+                     placeholder="Name (required)"
+                     ng-model="vm.aso.asoName"
+                     
+                     required/>
+                <span class="help-block has-error">
+                      <span ng-messages="asoForm.inputAsoName.$error"
+                            ng-show="asoForm.inputAsoName.$invalid &&
+                                       asoForm.inputAsoName.$dirty" multiple>
+                          <span ng-message="required">Name is required!</span>
+                          
+                      </span>
+                 </span>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="asoCode">Code</label>
+            <div class="col-md-4">
+              <input class="form-control"
+                     placeholder="Code"
+                     id="asoCode"
+                     ng-model="vm.aso.asoCode"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="asoMobile">Mobile #</label>
+            <div class="col-md-4">
+              <input class="form-control"
+                     id="asoMobile"
+                     ng-model="vm.aso.mobileNo" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Region</label>
+            <div class="col-md-2">
+              <select class="form-control"
+                      ng-options="region.id as region.regionName for region in  vm.regionList"
+                      ng-model="vm.aso.RegionId" ng-change="vm.getAreaByRegion()"
+                      required>
+                <option value="">Select Region</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Area</label>
+            <div class="col-md-2">
+              <select class="form-control"
+                      ng-options="area.id as area.areaName for area in  vm.areaList"
+                      ng-model="vm.aso.AreaId"
+                      required>
+                <option value="">Select Area</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="asoCode">E-Mail</label>
+            <div class="col-md-4">
+              <input class="form-control"
+                     placeholder="E-Mail"
+                     id="email"
+                     ng-model="vm.aso.email"/>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-2">
+                <span>
+                    <button class="btn btn-primary"
+                            style="width: 80px; margin-right: 10px"
+                            ng-click="vm.submit()"
+                            ng-disabled="asoForm.$invalid">
+                      Save
+                    </button>
+                </span>
+                 <span>
+                    <button class="btn btn-default"
+                            style="width: 70px;"
+                            ng-click="vm.cancel()">
+                      Cancel
+                    </button>
+                </span>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

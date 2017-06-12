@@ -1,0 +1,126 @@
+.em-menu-area{
+    position: relative;
+    background-color: #969696;
+    color: #57585a;;
+    padding-left: 0;
+}
+
+.em-menu-area-vertical{
+    float: left;
+    width: 200px;
+    min-height: 100vh;
+    padding-top: 30px;
+}
+
+.em-menu-area-horizontal{
+    width: 100%;
+    height: 40px;
+}
+
+.em-menu-area .btn:hover{
+    color: #ccc;
+}
+
+.em-menu-area ul{
+    padding-left: 0;
+}
+.em-menu{
+    list-style-type:none ;
+    vertical-align: top;
+}
+
+.em-menu ul{
+    display: inline;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.em-menu li{
+    line-height: 3em;
+    cursor: pointer;
+}
+
+.em-selectable-item:hover{
+    background-color: #555;
+}
+
+.em-menu-icon{
+    margin-right: 10px;
+}
+
+.em-menu li div {
+    display: inline-block;
+    width: 90%;
+    padding-left: 16px;
+}
+
+.em-noselect{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.em-menu-active-indicator{
+    float: right;
+    color: #ddd;
+    margin-right: 0;
+    margin-top: 8px;
+}
+
+.em-group-indicator-left{
+    float: right;
+    color: #ddd;
+    margin-right:2px ;
+    margin-top: 15px;
+}
+
+.em-subitem-section{
+    padding-left: 16px;
+}
+
+.em-menu-layout-button{
+    margin: 12px;
+    padding: 2px 8px;
+    color: #bbb;
+    background-color: #333;
+    border: 1px solid #999;
+}
+
+.em-layout-button-horizontal{
+    position: absolute;
+    top: -6px;
+    right: 10px;
+}
+
+.em-item-horizontal{
+    display: inline-block;
+    width: 165px !important;
+    margin-left: 20px;
+    margin-top: 5px;
+    line-height: 1.5em !important;
+}
+
+.em-popup-menu {
+    position: absolute;
+    z-index: 1000;
+    background-color: #333;
+    width: 200px;
+    padding-left: 0;
+}
+
+.em-fade-in-animation{
+    -moz-transition: linear all 0.5s;
+    -o-transition: linear all 0.5s;
+    -webkit-transition: linear all 0.5s;
+    transition: linear all 0.5s;
+}
+
+.em-fade-in-animation.ng-hide{
+    opacity: 0;
+}
+
+.em-button{
+    background: #555555;
+}

@@ -1,0 +1,16 @@
+/*ng-include.ng-enter,*/
+/*[ng-include].ng-enter,*/
+/*ui-view.ng-enter,*/
+/*[ng-view].ng-enter*/
+/*{*/
+    /*opacity: 0;*/
+    /*transition: opacity 1s;*/
+/*}*/
+
+/*ng-include.ng-enter-active,*/
+/*[ng-include].ng-enter-active*/
+/*ui-view.ng-enter-active,*/
+/*[ng-view].ng-enter-active   {*/
+    /*opacity: 1;*/
+/*}*/
+

@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+    <div class="panel-heading" style="font-weight: bolder">Holcim Event</div>
+    <div class="panel-body">
+    <div class="row">
+            <div class="btn-group btn-breadcrumb" style="width: 100%;">
+                <a ui-sref=".info"
+                   class="btn btn-default"
+                   style="width: 25%;color:#8F9092;font-weight: bolder">Basic Info</i></a>
+                <a ui-sref=".edit"
+                   class="btn btn-default"
+                   style="width: 25%;color:#8F9092;font-weight: bolder">Edit</a>
+                <a ui-sref=".editMembers"
+                   class="btn btn-default"
+                   style="width: 25%;color:#8F9092;font-weight: bolder">Members</a>
+                     <a ui-sref=".moreInfo" class="btn btn-default"
+                   ui-sref-active="active"
+                   style="width: 25%;color:#8F9092;font-weight: bolder">Evaluation sheet</a>
+            </div>
+    </div>
+    <div style="height: 650px; overflow-y: scroll" ui-view></div>
+    </div>
+</div>

@@ -1,0 +1,569 @@
+<form name="memberForm" class="form-horizontal" novalidate enctype="multipart/form-data">
+  <fieldset>
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label">Influencer Type</label>
+      <div class="col-md-2">
+        <select class="form-control"
+                ng-options="infl.influencerCode as infl.influencerName for infl in  vm.influencerTypes"
+                ng-model="vm.member.influencerCode"
+                required>
+          <option value="">Select Influencer</option>
+        </select>
+      </div>
+    </div>
+    
+	<div ng-if="vm.member.influencerCode=='mason'">
+		    <div class="form-group">
+		      <label class="col-md-2 control-label holcim-label">Sub Category</label>
+		      <div class="col-md-2">
+		        <select class="form-control"
+		                ng-options="sbc.key as sbc.value for sbc in  vm.subCategoryList"
+		                ng-model="vm.member.subCategory"
+		                required>
+		          <option value="">Select Category</option>
+		        </select>
+		      </div>
+		    </div>
+		 <div ng-if="vm.member.subCategory=='Contract' || vm.member.subCategory=='Head'"> 
+		      <div class="form-group">
+		      <label class="col-md-2 control-label holcim-label"
+		             for="inputMemberAddress">No Masons</label>
+		      <div class="col-md-4">
+		        <input class="form-control"
+		               id="inputMemberNoMasons"
+		               placeholder="No Masons"
+		               ng-model="vm.member.noOfMasons" required/>
+		               
+		               <span class="help-block has-error">
+				            <span ng-messages="memberForm.inputMemberNoMasons.$error"
+				                  ng-show="memberForm.inputMemberNoMasons.$invalid &&
+				                           memberForm.inputMemberNoMasons.$dirty" multiple>
+				              <span ng-message="required">Influencer Name is required!</span>
+     			            </span>
+				        </span>
+     		      </div>
+		    </div>
+       </div>
+   </div>
+      
+    
+      
+    <div class="form-group"
+         ng-class="{'has-error':memberForm.inputMemberName.$invalid &&
+                                    memberForm.inputMemberName.$dirty}">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberName">Name</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberName"
+               name="inputMemberName"
+               type="text"
+               placeholder="Name (required)"
+               ng-model="vm.member.influncerName" ng-minlength="6"
+               
+               required/>
+          <span class="help-block has-error">
+            <span ng-messages="memberForm.inputMemberName.$error"
+                  ng-show="memberForm.inputMemberName.$invalid &&
+                           memberForm.inputMemberName.$dirty" multiple>
+              <span ng-message="required">Influencer Name is required!</span>
+              <span ng-message="minlength">6 Characters required!</span>
+              
+            </span>
+          </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="languageLabel">Language</label>
+
+      <div class="col-md-4">
+        <select class="form-control"
+                id="languageLabel"
+                ng-options="lang.languageCode as lang.languageName for lang in  vm.languageList"
+                ng-model="vm.member.language" required>
+          <option value="">Select Language</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group"
+         ng-class="{'has-error':memberForm.inputMemberNIC.$invalid}">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberNIC">NIC</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberNIC"
+               name="inputMemberNIC"
+              
+               ng-model="vm.member.nic"
+               ng-change="vm.findMembersByNic()" required/>
+        <span class="help-block has-error">
+          <span ng-messages="memberForm.inputMemberNIC.$error"
+                ng-show="memberForm.inputMemberNIC.$invalid &&
+                           memberForm.inputMemberNIC.$dirty" multiple>
+            <span ng-message="required">NIC is required!</span>
+          </span>
+        </span>
+      </div>
+    </div>
+    <div ng-if="vm.member.influencerCode=='mason' || vm.member.influencerCode==null">
+      <div class="form-group">
+        <label class="col-md-2 control-label holcim-label"
+               for="inputMemberAso">Aso</label>
+        <div class="col-md-4">
+          <select class="form-control"
+                  ng-options="aso.id as aso.asoName for aso in vm.asos"
+                  ng-model="vm.member.asoId"
+                  ng-change="vm.getAreaForAso()"
+                  id="inputMemberAso"
+                  required>
+            <option value="">Select Aso</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <input class="form-control"
+                 id="inputArea"
+                 value="{{vm.member.areaId|area:vm.areaList}}"
+                 readonly="readonly"
+                 required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-2 control-label holcim-label">Location</label>
+        <div class="col-md-4">
+          <select class="form-control"
+                  ng-options="location.id as location.locationName for location in vm.locationList"
+                  ng-model="vm.member.locationId" required>
+            <option value="">Select Location</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberAddress">Address</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="inputMemberAddress"
+               placeholder="Address"
+               ng-model="vm.member.address" required/>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="inputMemberDob">Date of Birth</label>
+      <div class="col-md-4">
+        <div class="input-group">
+          <input class="form-control"
+                 id="inputMemberDob"
+                 type="text"
+                 is-open="vm.openedGivenDatePicker"
+                 datepicker-popup="MMM dd, yyyy"
+                 ng-model="vm.member.dateOfBirth"
+                 required/>
+                     <span class="input-group-btn">
+                          <button class="btn btn-default"
+                                  data="openedGivenDatePicker"
+                                  ng-click="vm.open($event)">
+                            <i class="glyphicon glyphicon-calendar"/>
+                          </button>
+                      </span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="mobileNo">Mobile #</label>
+      <div class="col-md-4">
+        <input class="form-control"
+                id="mobileNo"
+               name="mobileNo"
+               ng-model="vm.member.mobileNo" required/>
+      </div>
+    </div>
+    
+     <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="mobileNo1">Mobile # 1(optional)</label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="mobileNo1"
+               name="mobileNo1"
+               ng-model="vm.member.mobileNo1"/>
+     </div>
+    </div>
+    
+   <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="mobileNo2">Mobile # 2(optional)</label>
+      <div class="col-md-4">
+        <input class="form-control"
+                id="mobileNo2"
+               name="mobileNo2"
+               ng-model="vm.member.mobileNo2"/>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="landNo">Land No #
+      </label>
+      <div class="col-md-4">
+        <input class="form-control"
+              id="landNo"
+               ng-model="vm.member.landNo" required/>
+      </div>
+    </div>
+    <div ng-if="vm.member.influencerCode=='engineer' || vm.member.influencerCode=='to'">
+      <div class="form-group">
+        <label class="col-md-2 control-label holcim-label"
+               for="inputMemberOrganization">Organization</label>
+
+        <div class="col-md-4">
+          <input class="form-control"
+                 id="inputMemberOrganization"
+                 placeholder="Organization"
+                 ng-model="vm.member.organization" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-2 control-label holcim-label"
+               for="inputMemberDesignation">Designation</label>
+
+        <div class="col-md-4">
+          <input class="form-control"
+                 id="inputMemberDesignation"
+                 placeholder="Designation"
+                 ng-model="vm.member.designation" required/>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="col-md-2 control-label holcim-label"
+               for="inputMemberGender">Gender</label>
+
+        <div class="col-md-4">
+                <select class="form-control"
+	                  ng-options="gender.key as gender.value for gender in vm.genderList"
+	                  ng-model="vm.member.gender" required>
+	            	<option value="">Select Gender</option>
+	         	   </select>   
+                  
+        </div>
+      </div>
+      
+     <div class="form-group">
+        <label class="col-md-2 control-label holcim-label"
+               for="inputMemberEmail">E-Mail</label>
+
+        <div class="col-md-4">
+          <input class="form-control"
+                 id="inputMemberEmail"
+                 placeholder="Email"
+                 ng-model="vm.member.email" required/>
+        </div>
+        
+        <span class="help-block has-error">
+          <span ng-messages="memberForm.iinputMemberEmail.$error"
+                ng-show="memberForm.inputMemberEmail.$invalid &&
+                           memberForm.inputMemberEmail.$dirty" multiple>
+            <span ng-message="required">E-Mail!</span>
+          </span>
+        </span>
+        
+      </div>
+      
+     <div class="form-group">
+        <label class="col-md-2 control-label holcim-label"
+               for="inputMemberReferenceNo">Reference Number</label>
+
+        <div class="col-md-4">
+          <input class="form-control"
+                 id="inputMemberReferenceNo"
+                 placeholder="Reference Number"
+                 ng-model="vm.member.referenceNumber" required/>
+        </div>
+      </div>
+      
+      
+    </div>
+    
+     <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="experience">Working Experience
+      </label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="experience"
+               ng-model="vm.member.experience"/>
+      </div>
+    </div>
+    
+   <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="eduQuli">Education Qualification
+      </label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="eduQuli"
+               ng-model="vm.member.eduQuli"/>
+      </div>
+    </div>
+    
+  <div ng-if="vm.member.influencerCode=='mason'">  
+    
+   <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="houseBuilding">House Building
+      </label>
+      <div class="col-md-4">
+       	   <select class="form-control"
+                  ng-options="yn.key as yn.value for yn in vm.yesNo"
+                  ng-model="vm.member.houseBuilding" required>
+            <option value="">Select</option>
+          </select>
+       </div>
+    </div>
+    
+   <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="tileAndPlastering">Fixing and Plastering
+      </label>
+      <div class="col-md-4">
+      	   <select class="form-control"
+                  ng-options="yn.key as yn.value for yn in vm.yesNo"
+                  ng-model="vm.member.tileAndPlastering" required>
+            <option value="">Select</option>
+          </select>
+       </div>
+    </div>
+    	
+   <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="makeWall">Making Wall
+      </label>
+      <div class="col-md-4">
+      		<select class="form-control"
+                  ng-options="yn.key as yn.value for yn in vm.yesNo"
+                  ng-model="vm.member.makeWall" required>
+            <option value="">Select</option>
+          </select>
+          
+      </div>
+    </div>
+     	
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="concrete">Concrete
+      </label>
+      <div class="col-md-4">
+      <select class="form-control"
+                  ng-options="yn.key as yn.value for yn in vm.yesNo"
+                  ng-model="vm.member.concrete" required>
+            <option value="">Select</option>
+          </select>
+          
+      </div>
+    </div>
+ 
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="otherMembership">Any Other Memberships Except HLL
+      </label>
+      <div class="col-md-4">
+      <select class="form-control"
+                  ng-options="yn.key as yn.value for yn in vm.yesNo"
+                  ng-model="vm.member.otherMembership" required>
+            <option value="">Select</option>
+          </select>
+          
+      </div>
+    </div>
+    
+     <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="other">Participation on Any Other Workshops Except HLL
+      </label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="other"
+               ng-model="vm.member.otherWorkshop"/>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="recomendedBy">Recomended By	
+      </label>
+      <div class="col-md-4">
+            <select class="form-control"
+                  ng-options="yn.key as yn.value for yn in vm.recomendedList"
+                  ng-model="vm.member.recomendedBy">
+            <option value="">Select</option>
+          </select>
+      </div>
+    </div>
+    
+      <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="influencerStatus">Influencer Status	
+      </label>
+      <div class="col-md-4">
+            <select class="form-control"
+                  ng-options="yn.key as yn.value for yn in vm.influencerStatusList"
+                  ng-model="vm.member.influencerStatus" required>
+            <option value="">Select Infuencer Status</option>
+          </select>
+      </div>
+    </div>
+    
+    
+    <div ng-if="vm.member.influencerStatus=='new'">
+    
+	  <div class="form-group">
+	      <label class="col-md-2 control-label holcim-label"
+	             for="mobilerName">Mobiler Name
+	      </label>
+	      <div class="col-md-4">
+	        <input class="form-control"
+	               id="mobilerName"
+	               ng-model="vm.member.mobilerName"/>
+	      </div>
+	  </div>
+    
+	 <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="siteVisitedDate">Site Visit Date</label>
+      <div class="col-md-4">
+        <div class="input-group">
+          <input class="form-control"
+                 id="siteVisitedDate"
+                 type="text"
+                 is-open="vm.openedSiteVisitDate"
+                 datepicker-popup="MMM dd, yyyy"
+                 ng-model="vm.member.siteVisitedDate"
+                 required/>
+                     <span class="input-group-btn">
+                          <button class="btn btn-default"
+                                  data="openedSiteVisitDate"
+                                  ng-click="vm.open($event)">
+                            <i class="glyphicon glyphicon-calendar"/>
+                          </button>
+                      </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="contactedStatus">Contacted Status
+      </label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="contactedStatus"
+               ng-model="vm.member.contactedStatus"/>
+      </div>
+    </div>
+      	
+  </div>
+  
+  <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="masonMeetType">Meeting Type
+      </label>
+      <div class="col-md-4">
+             <select class="form-control"
+                  ng-options="yn.key as yn.value for yn in vm.masonTypeList"
+                  ng-model="vm.member.masonMeetType" required>
+                <option value="">Select Meeting Types</option>
+             </select>
+       </div>
+    </div>
+    	    
+    
+  </div>
+         <div class="form-group">
+	   <label class="col-md-2 control-label holcim-label"
+	             for="photoPath">Photo</label>
+	      <div class="col-md-4">
+	        <div class="input-group">
+	         Profile Picture: <input ngf-select="" ng-model="vm.picFile" name="file" accept="image/*" type="file"/>
+              <br>
+ 	          <img ngf-src="vm.picFile" class="thumb">
+	          <span class="progress" ng-show="vm.picFile.progress >= 0">
+                  <div class="ng-binding" style="width:{{vm.picFile.progress}}%" ng-bind="vm.picFile.progress + '%'"></div>
+              </span>
+              <span ng-show="vm.picFile.result">Upload Successful</span>
+	  	 </div>
+	   </div>
+    </div>  	
+          		
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="other">Other
+      </label>
+      <div class="col-md-4">
+        <input class="form-control"
+               id="other"
+               ng-model="vm.member.other"/>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="other">Description
+      </label>
+      <div class="col-md-4">
+        <textarea class="form-control"
+               id="description" rows="5"
+               ng-model="vm.member.description" style="width:500px;height:100px"></textarea>
+      </div>
+    </div>
+ <div ng-if="vm.member.influencerCode=='mason' || vm.member.influencerCode==null">   
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="other"> Masons site visited dates
+      </label>
+      <div class="col-md-4">
+        <textarea class="form-control"
+               id="siteVisitDates" rows="5"
+               ng-model="vm.member.siteVisitedDates" style="width:500px;height:100px"></textarea>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="col-md-2 control-label holcim-label"
+             for="other">Masons Will Have site visit Dates
+      </label>
+      <div class="col-md-4">
+        <textarea class="form-control"
+               id="description" rows="5"
+               ng-model="vm.member.siteWillVisitDates" style="width:500px;height:100px"></textarea>
+      </div>
+    </div>
+   </div> 
+      	
+    <div class="form-group">
+      <div class="col-md-4 col-md-offset-2">
+                <span>
+                    <button class="btn btn-primary"
+                            style="width: 80px; margin-right: 10px"
+                            ng-click="vm.submit()">
+                      Save
+                    </button>
+                </span>
+                 <span>
+                    <button class="btn btn-default"
+                            style="width: 70px;"
+                            ng-click="vm.cancel()">
+                      Cancel
+                    </button>
+                </span>
+      </div>
+    </div>
+  </fieldset>
+</form>

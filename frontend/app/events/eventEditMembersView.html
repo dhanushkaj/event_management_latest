@@ -1,0 +1,121 @@
+ 
+    <!-- Default panel contents -->
+    
+        <!--<div class="col-xs-4">-->
+            <!--<label for="search">Search:</label>-->
+            <form class="search-form">
+		            <div class="col-xs-2">
+				            <a class="btn icon-btn btn-danger" style="margin-top: 15px" ui-sref="memberEdit.edit({influencerId:0})">
+				                <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-danger"></span>Add Member</a>
+				    </div>
+		             
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" ng-model="q" name="search"
+                           placeholder="search">
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+            </form>
+            <!--<input ng-model="q" id="search" class="form-control" placeholder="Search">-->
+        <!--</div>-->
+        
+        <form name="eventMemberForm" class="form-horizontal" style="height: 80%">
+            <div ng-if="vm.memberIds[0]!=''">
+    <p> Total Members in Event  = <b>{{vm.totalMemberCountInEvent}}</b></p>
+                    <table class="table table-striped table-hover" style="height: 400px;width: 100%">
+                   
+                        <tr>
+                           <th></th>
+                            <th class="holcim-label">NIC</th>
+                            <th class="holcim-label">Influncer Name</th>
+                            <th class="holcim-label"> Mobile Number</th>
+                        </tr>
+                        <tr dir-paginate="mason in vm.masonsByAsoAndRegionAndLoc|selectedIds:vm.memberIds|
+                                            filter:q | itemsPerPage:10">
+
+						
+                            <td><input type="checkbox" ng-model="vm.checked[$index+mason.nic]" checked="checked"
+
+                                       ng-click="vm.removeChange(mason.nic,$index)"></td>
+
+                            <td>{{mason.nic}}</td>
+                            <td>
+		                              <a ui-sref="memberEdit.info({influencerId:mason.id})">
+			                 			 {{mason.influncerName}}
+			               			 </a>
+                		    </td>
+                            
+                            <td>{{mason.mobileNo}}</td>
+                        </tr>
+                    </table>
+                </div>
+
+            <div ng-if="vm.memberIds[0]==''">
+                <table class="table table-striped table-hover">
+                    <tr>
+             
+                        <th></th>
+                        <th class="holcim-label">NIC</th>
+                        <th class="holcim-label">Influncer Name</th>
+                        <th class="holcim-label">Mobile Number</th>
+                    </tr>
+
+                    <tr dir-paginate="mason in vm.masonsByAsoAndRegionAndLoc|filter:q | itemsPerPage: 10" class="holcim-label">
+				
+                        <td><input type="checkbox" ng-model="vm.chekcedMem[$index+mason.nic]"
+                                   ng-click="vm.addMembers($index,mason.nic)"></td>
+                        <td>{{mason.nic}}</td>
+                        <td>
+                              <a ui-sref="memberEdit.info({influencerId:mason.id})">
+	                 			 {{mason.influncerName}}
+	               			 </a>
+                		</td>
+                        <td>{{mason.mobileNo}}</td>
+                    </tr>
+
+                </table>
+            </div>
+            <div ng-show="vm.memberIds[0]!=''">
+  	       <span>
+                    <button class="btn btn-primary"
+                            style="width: 150px; margin-right: 10px"
+                            ng-click="vm.removeMembers()">
+                        Remove Members
+                    </button>
+           </span>
+
+            <span>
+                    <button class="btn btn-primary"
+                            style="width: 150px; margin-right: 10px"
+                            ng-click="showPopup()" data-backdrop="static">
+                        Add More Members
+                    </button>
+           </span>
+            </div>
+
+            <div ng-show="vm.memberIds[0]==''">
+                <div class="form-group" style="vertical-align: bottom">
+                    <div class="col-md-4 col-md-offset-2">
+                        <span>
+                            <button class="btn btn-primary"
+                                style="width: 80px; margin-right: 10px"
+                                ng-click="vm.addMebersToEvent(masonsByAsoAndRegionAndLoc)">
+                                Save
+                            </button>
+                        </span>
+                        <span>
+                            <button class="btn btn-default"
+                                style="width: 70px;"
+                                ng-click="vm.cancel()">
+                                Cancel
+                             </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+             <dir-pagination-controls></dir-pagination-controls>
+        </form>
+        <div>
+           
+        </div>
+     
+ 

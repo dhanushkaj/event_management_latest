@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Regions</div>
+    <div class="panel-body">
+
+         <div class="col-xs-2">
+
+            <a class="btn icon-btn btn-danger" style="margin-top: 1px" ui-sref="locationEdit.edit({locationId:0})">
+                <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-danger"></span>Add</a>
+        </div>
+
+        <div class="col-xs-4">
+            <!--<label for="search">Search:</label>-->
+            <input ng-model="q" id="search" class="form-control" placeholder="Search">
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+
+                <td></td>
+                <td>ASO Code</td>
+
+                <td>Region</td>
+
+                <td>Location</td>
+
+            </thead>
+            <tbody>
+            <tr dir-paginate="location in vm.locationList| filter:q | itemsPerPage: 5" class="holcim-label">
+               <td><a class="type2" style="display: inline-block" href="#" onClick="return false" ng-click="vm.deleteLocation(location._id);">R</a></td>
+
+                <td>
+                    <div class="circleBase type2" style="display: inline-block">L</div><a ui-sref="locationEdit.edit({locationId:location._id})"> {{location.asocode}}</a>
+
+                </td>
+
+
+                <td>
+                    {{location.region}}
+                </td>
+
+
+                <td>
+                    {{location.location}}
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+        <dir-pagination-controls></dir-pagination-controls>
+    </div>
+    <!--<div class="panel-footer">Panel footer</div>-->
+</div>

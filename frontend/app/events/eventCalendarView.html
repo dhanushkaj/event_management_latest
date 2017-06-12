@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="panel-body">
+    <div class="col-xs-2">
+      <a class="btn icon-btn btn-danger" ui-sref="eventDetails.edit({eventId:0})">
+        <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-danger"></span>Add</a>
+    </div>
+    <div class="col-xs-2">
+      <select class="form-control"
+              style="margin-top: -10px"
+              id="asoDropDown"
+              ng-options="aso.id as aso.asoName for aso in  asosList"
+              ng-model="asoCode" ng-change="getEventsForASO()" >
+        <option value="">Select ASO</option>
+      </select>
+    </div>
+    <div class="col-xs-2">
+      <select class="form-control "
+              id="rsmDropDown"
+              style="margin-top: -10px"
+              ng-options="aso.id as aso.asoName for aso in  vm.asosList"
+              ng-model="vm.asoCode" ng-change="vm.getMembersForASO()" >
+        <option value="">Select RSM</option>
+      </select>
+    </div>
+  </div>
+    <!--<a class="btn icon-btn btn-danger" ui-sref="eventDetails.edit({eventId:vm.event.id})">-->
+    <div style="padding: 10px;background-color:#8F9092; color: #eceeee">
+        <div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventList"></div>
+        <!--<div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div>-->
+    </div>
+</div>

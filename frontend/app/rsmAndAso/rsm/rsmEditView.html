@@ -1,0 +1,116 @@
+<div class="panel panel-default">
+  <div class="panel-heading" style="font-weight: bolder">Regional Sales Officer</div>
+  <div class="panel-body">
+    <div class="row">
+    </div>
+    <div style="height: 450px">
+      <form name="rsmForm" class="form-horizontal" novalidate>
+        <fieldset>
+          <div class="form-group"
+               ng-class="{'has-error':rsmForm.inputMemberName.$invalid &&
+                                    rsmForm.inputRsmName.$dirty}">
+
+            <label class="col-md-2 control-label"
+                   for="inputRsmName">Name</label>
+
+            <div class="col-md-4">
+              <input class="form-control"
+                     id="inputRsmName"
+                     name="inputRsmName"
+                     type="text"
+                     placeholder="Name (required)"
+                     ng-model="vm.rsm.rsmName"
+                     ng-minlength="6"
+                     ng-maxlength="40"
+                     required/>
+                <span class="help-block has-error">
+                      <span ng-messages="rsmForm.inputRsmName.$error"
+                            ng-show="rsmForm.inputRsmName.$invalid &&
+                                       rsmForm.inputRsmName.$dirty" multiple>
+                          <span ng-message="required">Name is required!</span>
+                          <span ng-message="minlength">6 Characters required!</span>
+                          <span ng-message="maxlength">Limited to 40 Characters!</span>
+                      </span>
+                 </span>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="rsmCode">Code</label>
+            <div class="col-md-4">
+              <input class="form-control"
+                     placeholder="Code"
+                     id="rsmCode"
+                     ng-model="vm.rsm.rsmCode"
+                     required
+                     />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="rsmMobile">Mobile #</label>
+            <div class="col-md-4">
+              <input class="form-control"
+                     id="rsmMobile"
+                     name="rsmMobile"
+                     ng-model="vm.rsm.mobileNo"
+                     required/>
+                    <span class="help-block has-error">
+                      <span ng-messages="rsmForm.rsmMobile.$error"
+                            ng-show="rsmForm.rsmMobile.$invalid &&
+                                       rsmForm.rsmMobile.$dirty" multiple>
+                          <span ng-message="required">Mobile # is required!</span>
+                          <span ng-message="minlength">10 Characters required!</span>
+                          <span ng-message="maxlength">Limited to 10 Characters!</span>
+                      </span>
+                 </span>
+
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-2 control-label">Region</label>
+            <div class="col-md-2">
+              <select class="form-control"
+                      ng-options="region.id as region.regionName for region in  vm.regionList"
+                      ng-model="vm.rsm.RegionId" required>
+                <option value="">Select Region</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-2 control-label"
+                   for="asoCode">E-Mail</label>
+            <div class="col-md-4">
+              <input class="form-control"
+                     placeholder="E-Mail"
+                     id="email"
+                     ng-model="vm.rsm.email"/>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-2">
+                <span>
+                    <button class="btn btn-primary"
+                            style="width: 80px; margin-right: 10px"
+                            ng-click="vm.submit()"
+                            ng-disabled="rsmForm.$invalid">
+                      Save
+                    </button>
+                </span>
+                 <span>
+                    <button class="btn btn-default"
+                            style="width: 70px;"
+                            ng-click="vm.cancel()">
+                      Cancel
+                    </button>
+                </span>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

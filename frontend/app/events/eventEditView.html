@@ -1,0 +1,132 @@
+<form name="eventFrom" class="form-horizontal" >
+
+  <div class="control-group" ng-class="{true: 'error'}[submitted && eventFrom.description.$invalid]">
+    <fieldset>
+      <div class="form-group">
+        <label class="col-md-2 control-label holcim-label">Influencer Type</label>
+        <div class="col-md-4">
+          <select class="form-control"
+                  ng-options="infl.influencerCode as infl.influencerName for infl in  vm.influencerTypes"
+                  ng-model="vm.event.influencerCode"
+                  ng-change="vm.getEventTypesInfluencerCode()"
+                  required>
+            <option value="">Influencer Type</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-2 control-label holcim-label">Type</label>
+        <div class="col-md-4">
+          <select class="form-control"
+                  ng-options="eventType.code as eventType.name for eventType in vm.eventTypes"
+                  ng-model="vm.event.code"
+                  required>
+            <option value="">Select Event Type</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <input class="form-control"
+                 id="inputProductCode"
+                 value="{{vm.event.code}}"
+                 readonly="readonly"
+                 required/>
+        </div>
+      </div>
+      <div ng-if="vm.event.influencerCode=='mason' || vm.event.influencerCode==null">
+        <div class="form-group">
+          <label class="col-md-2 control-label holcim-label">Owner(ASO)</label>
+          <div class="col-md-4">
+            <select class="form-control"
+                    ng-options="aso.id as aso.asoName for aso in vm.asos"
+                    ng-model="vm.event.asoId"
+                    ng-change="vm.getAreaForAso()"
+                    equired>
+              <option value="">Select Owner</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <input class="form-control"
+                   id="inputArea"
+                   value="{{vm.event.areaId|area:vm.areaList}}"
+                   readonly="readonly"
+                   required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-2 control-label holcim-label">Location</label>
+          <div class="col-md-4">
+            <select class="form-control"
+                    ng-options="location.id as location.locationName for location in vm.locationList"
+                    ng-model="vm.event.location" required   >
+              <option value="">Select Event Location</option>
+            </select>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="form-group">
+        <label class="col-md-2 control-label holcim-label"
+               for="inputAvailabilityDate">Date</label>
+        <div class="col-md-4">
+          <div class="input-group">
+            <input class="form-control"
+                   id="inputAvailabilityDate"
+                   type="text"
+                   is-open="vm.opend"
+                   datepicker-popup="MMM dd, yyyy"
+                   ng-model="vm.event.start"
+                   required/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="vm.open($event)">
+                          <i class="glyphicon glyphicon-calendar"/>
+                        </button>
+                    </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-2 control-label holcim-label"
+               for="description">Budget</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control"
+                 id="Budget"
+                 placeholder="Budget"
+                 rows="3"
+                 ng-model="vm.event.budget"/>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-2 control-label holcim-label"
+               for="description">Description</label>
+        <div class="col-md-4">
+                <textarea class="form-control"
+                          id="description"
+                          placeholder="Description"
+                          rows="3"
+                          ng-model="vm.event.description" required></textarea>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-4 col-md-offset-2">
+                <span>
+                    <button class="btn btn-primary"
+                            style="width: 80px; margin-right: 10px"
+                            ng-click="vm.submit();submitted=true" >
+                      Save</button>
+                </span>
+                 <span>
+                    <button class="btn btn-default"
+                            style="width: 70px;"
+                            ng-click="vm.cancel()">
+                      Cancel</button>
+                </span>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</form>

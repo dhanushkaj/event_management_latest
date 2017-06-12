@@ -1,0 +1,27 @@
+<div class="panel-body">
+    <div class="row">
+        <div class="col-md-6 form-group">
+            <div class="row">
+                <label class="col-md-4 control-label">Aso Code</label>
+                <div class="col-md-8">{{vm.location.asocode}}</div>
+            </div>
+            <div class="row">
+                <label class="col-md-4 control-label">Region</label>
+                <div class="col-md-6">{{vm.location.region}}</div>
+            </div>
+            <div class="row">
+                <label class="col-md-4 control-label">Location</label>
+                <div class="col-md-6">{{vm.location.location}}</div>
+            </div>
+             
+ 
+        </div>
+    </div>
+</div>
+<div class="panel-footer">
+    <a class="btn btn-default" ui-sref="locationList">
+        Location List
+    </a>
+    <a class="btn btn-primary" ui-sref="locationEdit.edit({locationId:vm.location._id})"
+       style="width: 80px; margin-left: 10px">Edit</a>
+</div>

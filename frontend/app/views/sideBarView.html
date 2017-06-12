@@ -1,0 +1,49 @@
+    <!-- Sidebar -->
+        <ul class="sidebar">
+            <li class="sidebar-main">
+                <a ng-click="toggleSidebar()">
+                    Dashboard
+                    <span class="menu-icon glyphicon glyphicon-transfer"></span>
+                </a>
+            </li>
+            <!--<li class="sidebar-list" ng-show="userRole==='EventAdmin'">-->
+                <!--<a ui-sref="dashboard">Home <span class="menu-icon fa fa-tachometer"></span></a>-->
+            <!--</li>-->
+            <li class="sidebar-list" ng-show="userRole==='EventAdmin'">
+                <a ui-sref="eventCalendar">Calendar <span class="menu-icon fa fa-calendar"></span></a>
+            </li>
+
+           <li class="sidebar-list" ng-show="userRole==='EventAdmin'">
+            <a ui-sref="regions">Regions<span class="menu-icon fa fa-globe"></span></a>
+           </li>
+           <li class="sidebar-list" ng-show="userRole==='EventAdmin'">
+            <a ui-sref="rsm">RSM<span class="menu-icon fa fa-globe"></span></a>
+           </li>
+	          <li class="sidebar-list" ng-show="userRole==='EventAdmin'">
+	            <a ui-sref="areas">Areas<span class="menu-icon fa fa-globe"></span></a>
+	          </li>
+	          <li class="sidebar-list" ng-show="userRole==='EventAdmin'">
+              <a ui-sref="aso">ASO<span class="menu-icon fa fa-globe"></span></a>
+            </li>
+            <li class="sidebar-list" ng-show="userRole==='EventAdmin'">
+                <a ui-sref="membersList">Members<span class="menu-icon fa fa-users"></span></a>
+            </li>
+            <li class="sidebar-list" ng-show="userRole==='EventAdmin'">
+                <a ui-sref="eventList">Events<span class="menu-icon fa fa-bell"></span></a>
+            </li>
+            <li class="sidebar-list" ng-show="userRole==='ITAdmin'">
+                <a ui-sref="userManagement">User Management<span class="menu-icon fa fa-users"></span></a>
+            </li>
+            <li class="sidebar-list" ng-show="userRole==='ITAdmin'">
+                <a ui-sref="userSessionList">Login Session Details<span class="menu-icon fa fa-sign-in"></span></a>
+            </li>
+
+          </ul>
+        <div class="sidebar-footer">
+            <div class="col-xs-4">
+                <a href="#">
+                    Support
+                </a>
+            </div>
+        </div>
+    <!-- End Sidebar -->
